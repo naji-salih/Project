@@ -275,7 +275,7 @@ input[type=text]:placeholder {
 <div class="wrapper fadeInDown">
   <div id="formContent">
 
-    <form>
+    <form action="Controller" method="get">
       <input type="text" id="name" class="name" name="name" placeholder="name">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>

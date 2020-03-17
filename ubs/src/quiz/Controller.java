@@ -41,17 +41,25 @@ public class Controller extends HttpServlet {
 	
 		HttpSession session = request.getSession();
 		
-		String benutzer = request.getParameter("benutzer");
-		session.setAttribute("benutzer", benutzer);
+		String name = request.getParameter("name");
+		session.setAttribute("name", name);
 		
 		int i = 0;
 		int count = 0;
+
 		
 		if(request.getParameter("send") !=  null) {
 			i++;
 			if(fragen.get(i).getAntwort()==request.getParameter("awnser"))
 			{
 				++count;
+				
+				if(i>= fragen.size())
+				{
+					RequestDispatcher rd = request.getRequestDispatcher("Fragen.jsp");
+					rd.forward(request, response);
+				}
+				
 			}
 		}
 		

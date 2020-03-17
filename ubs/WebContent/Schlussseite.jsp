@@ -7,17 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	 <form action="Controller" method="get">
+ <form action="Controller" method="get">
 	 <% 
-	 	out.println(session.getAttribute("Frage"));
+	 	out.println(session.getAttribute("name"));
 	 	out.println(session.getAttribute("count"));
 	 %>
-	 
-      <input type="text" id="anwser" class="anwser" name="anwser" placeholder="Antwort">
-      <input type="submit" class="antwort" value="send" name="send">
-   
-    </form>
 	
+    </form>
 
 </body>
 </html>
