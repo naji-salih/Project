@@ -26,6 +26,9 @@ public class Controller extends HttpServlet {
     public Controller() {
         
     	fragen.add(new DataFragen("Wie alt ist naji", "16"));
+    	fragen.add(new DataFragen("Wie alt ist tenzin", "22"));
+    	fragen.add(new DataFragen("Wie alt ist kushal", "15"));
+    	fragen.add(new DataFragen("Wie alt ist andrew", "16"));
     	
     }
 
@@ -41,7 +44,20 @@ public class Controller extends HttpServlet {
 		String benutzer = request.getParameter("benutzer");
 		session.setAttribute("benutzer", benutzer);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("Startseite.jsp");
+		int i = 0;
+		int count = 0;
+		
+		if(request.getParameter("send") !=  null) {
+			i++;
+			if(fragen.get(i).getAntwort()==request.getParameter("awnser"))
+			{
+				++count;
+			}
+		}
+		
+		session.setAttribute("Frage", fragen.get(i).getFrage());
+		
+		RequestDispatcher rd = request.getRequestDispatcher("Fragen.jsp");
 		rd.forward(request, response);
 	
 	}
