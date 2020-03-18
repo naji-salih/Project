@@ -9,11 +9,7 @@
 <body>
 
  <form action="BookController" method="get">
-	 <% 
-	 	out.println(session.getAttribute("Frage"));
-	 	out.println(session.getAttribute("count"));
-	 %>
-	 	
+	
 	 <fieldset>		
       <input type="text" id="name" class="name" name="name" placeholder="name">
       <input type="text" id="genre" class="genre" name="genre" placeholder="genre">

@@ -2,6 +2,7 @@ package bookstore;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,7 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/BookController")
 public class BookController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private DataBibi bibi = new DataBibi("Zurich Bibi", null);  
+    private DataBibi bibi = new DataBibi("Zurich Bibi", null);
+    
+    ArrayList <DataBuch> buecher = new ArrayList<DataBuch>();
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -34,13 +38,18 @@ public class BookController extends HttpServlet {
 		
 		String buchName = request.getParameter("name");
 		String buchGenre =request.getParameter("genre");
-		String buchSeite =request.getParameter("seiten");
+		int buchSeite =Integer.parseInt(request.getParameter("seiten"));
 		
 		String autorVname = request.getParameter("vname");
 		String autorNname =request.getParameter("nname");
 		LocalDate autorDatum =LocalDate.parse(request.getParameter("datum"));
-		bibi.setBuch(new DataBuch(buchName,new Autor(autoVname, autorNname, autorDatum),buchSeite, buchGenre);
-		RequestDispatcher rd = request.getRequestDispatcher("Start.jsp");
+		DataAutor autor = new DataAutor(autorVname, autorNname, autorDatum);
+		DataBuch buch = new DataBuch(buchName,autor,buchSeite, buchGenre);
+		buecher.add(buch);
+		bibi.setBuch(buecher);
+		
+		request.setAttribute("Bibi", bibi);
+		RequestDispatcher rd = request.getRequestDispatcher("liste.jsp");
 		rd.forward(request, response);
 	
 	}
