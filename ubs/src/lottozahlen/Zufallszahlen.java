@@ -1,18 +1,19 @@
 package lottozahlen;
 
-private int zufallzahl;
+import java.util.Random;
+public class Zufallszahlen {
 
-public class Zufallszahlen { 
-		  // Eine (versteckte) Klassenvariable vom Typ der eigenen Klasse
-		  private static Singleton instance;
-		  // Verhindere die Erzeugung des Objektes über andere Methoden
-		  private Singleton () {}
-		  // Eine Zugriffsmethode auf Klassenebene, welches dir '''einmal''' ein konkretes 
-		  // Objekt erzeugt und dieses zurückliefert.
-		  public static Singleton getInstance () {
-		    if (Singleton.instance == null) {
-		      Singleton.instance = new Singleton ();
-		    }
-		    return Singleton.instance;
-		  }
+    public int[] getZufallzahl(){
+        int[] gewinnerzahlen = new int[6]; 
+        int i;
+
+        for(i = 0; i < gewinnerzahlen.length; i++ ){
+                int zufallzahl = new Random().nextInt(49);
+                gewinnerzahlen[i] =  zufallzahl;   
+                System.out.println(zufallzahl);
+        }
+        
+        
+        return gewinnerzahlen; 
+    } 
 }
